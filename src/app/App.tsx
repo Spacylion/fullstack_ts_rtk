@@ -5,7 +5,7 @@ import Cabins from "../pages/cabins/Cabins.tsx";
 import Users from "../pages/users/Users.tsx";
 import Settings from "../pages/settings/Settings.tsx";
 import Account from "../pages/account/Account.tsx";
-import Login from "../pages/login/Login.tsx";
+// import Login from "../pages/login/Login.tsx";
 import PageNotFound from "../pages/page-not-found/PageNotFound.tsx";
 import GlobalStyles from "../shared/styles/GlobalStyles.ts";
 import AppLayout from "./AppLayout.tsx";
@@ -25,7 +25,7 @@ function App() {
                         <Route path='settings' element={<Settings/>}/>
                         <Route path='account' element={<Account/>}/>
                     </Route>
-                    <Route path='login' element={<Login/>}/>
+                    {/*<Route path='login' element={<Login/>}/>*/}
                     <Route path='*' element={<PageNotFound/>}/>
                 </Routes>
             </BrowserRouter>

@@ -1,38 +1,38 @@
-import Button from "../../ui/Button";
-import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
-import Input from "../../ui/Input";
-
 // Email regex: /\S+@\S+\.\S+/
 
+import Form from "../../shared/ui/Form.tsx";
+import {Input} from "../../shared/ui/Input.tsx";
+import FormRowVertical from "../../shared/ui/FormRowVertical.tsx";
+import Button from "../../shared/ui/Button.tsx";
+
 function SignupForm() {
-  return (
-    <Form>
-      <FormRow label="Full name" error={""}>
-        <Input type="text" id="fullName" />
-      </FormRow>
+    return (
+        <Form>
+            <FormRowVertical label="Full name" error={""}>
+                <Input type="text" id="fullName"/>
+            </FormRowVertical>
 
-      <FormRow label="Email address" error={""}>
-        <Input type="email" id="email" />
-      </FormRow>
+            <FormRowVertical label="Email address" error={""}>
+                <Input type="email" id="email"/>
+            </FormRowVertical>
 
-      <FormRow label="Password (min 8 characters)" error={""}>
-        <Input type="password" id="password" />
-      </FormRow>
+            <FormRowVertical label="Password (min 8 characters)" error={""}>
+                <Input type="password" id="password"/>
+            </FormRowVertical>
 
-      <FormRow label="Repeat password" error={""}>
-        <Input type="password" id="passwordConfirm" />
-      </FormRow>
+            <FormRowVertical label="Repeat password" error={""}>
+                <Input type="password" id="passwordConfirm"/>
+            </FormRowVertical>
 
-      <FormRow>
-        {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
-          Cancel
-        </Button>
-        <Button>Create new user</Button>
-      </FormRow>
-    </Form>
-  );
+            <FormRowVertical>
+                {/* type is an HTML attribute! */}
+                <Button variation="secondary" type="reset">
+                    Cancel
+                </Button>
+                <Button>Create new user</Button>
+            </FormRowVertical>
+        </Form>
+    );
 }
 
 export default SignupForm;
