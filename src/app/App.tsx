@@ -1,5 +1,5 @@
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import Dashboard from "../pages/dashboard/Dashboard.tsx";
+import Dashboard from "../entities/dashboard/Dashboard.tsx";
 import Bookings from "../pages/bookings/Bookings.tsx";
 import Cabins from "../pages/cabins/Cabins.tsx";
 import Users from "../pages/users/Users.tsx";
@@ -9,10 +9,25 @@ import Account from "../pages/account/Account.tsx";
 import PageNotFound from "../pages/page-not-found/PageNotFound.tsx";
 import GlobalStyles from "../shared/styles/GlobalStyles.ts";
 import AppLayout from "./AppLayout.tsx";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+import Login from "../pages/login/Login.tsx";
+import UIToaster from "../features/toaster/Toaster.tsx";
+
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: 0,
+        }
+    }
+})
 
 function App() {
+
     return (
-        <>
+        <QueryClientProvider client={queryClient}>
+            <ReactQueryDevtools initialIsOpen={false}/>
             <GlobalStyles/>
             <BrowserRouter>
                 <Routes>
@@ -25,11 +40,12 @@ function App() {
                         <Route path='settings' element={<Settings/>}/>
                         <Route path='account' element={<Account/>}/>
                     </Route>
-                    {/*<Route path='login' element={<Login/>}/>*/}
+                    <Route path='login' element={<Login/>}/>
                     <Route path='*' element={<PageNotFound/>}/>
                 </Routes>
             </BrowserRouter>
-        </>
+            <UIToaster/>
+        </QueryClientProvider>
     );
 }
 
